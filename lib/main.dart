@@ -73,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
             colors: [Color(0xFFD1F2EB), Color(0xFF5EEAD4)],
           ),
         ),
+     ),
         child: Center(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(28),
