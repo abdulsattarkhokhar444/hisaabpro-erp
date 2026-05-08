@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HisaabPro - File 3: Discounts + Settings + Tracking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #D1F2EB; color: #134E4A; padding: 20px; }
+        .page-title { text-align: center; color: #0D9488; font-size: 28px; font-weight: 700; margin-bottom: 30px; }
+        .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .screen-wrapper { display: flex; flex-direction: column; align-items: center; }
+        .role-label { text-align: center; font-size: 14px; font-weight: 700; color: white; margin-bottom: 16px; background: linear-gradient(135deg, #0D9488, #5EEAD4); padding: 10px 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3); }
+        .phone-mockup { max-width: 380px; background: #1f2937; border-radius: 40px; padding: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .screen { background: #D1F2EB; border-radius: 32px; min-height: 780px; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #0D9488, #5EEAD4); color: white; padding: 24px 20px; border-radius: 0 0 28px 28px; }
+        .header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .header p { font-size: 12px; opacity: 0.9; }
+        .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px; }
+        .kpi-card { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.8); padding: 16px; text-align: center; box-shadow: 0 8px 32px 0 rgba(13, 148, 136, 0.15); }
+        .kpi-icon { width: 48px; height: 48px; background: #0D9488; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: white; font-size: 20px; }
+        .kpi-value { font-size: 20px; font-weight: 700; color: #0D9488; }
+        .kpi-label { font-size: 10px; opacity: 0.7; margin-top: 4px; }
+        .section-title { font-size: 16px; font-weight: 600; margin: 24px 16px 12px; color: #0D9488; }
+        .list-item { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.8); padding: 14px; margin: 0 16px 12px; display: flex; align-items: center; gap: 12px; }
+        .avatar-icon { width: 44px; height: 44px; background: #0D9488; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 16px; }
+        .badge { background: #10B981; color: white; padding: 4px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+        .btn-primary { background: #0D9488; color: white; border: none; padding: 16px 24px; border-radius: 16px; font-weight: 600; font-size: 15px; width: calc(100% - 32px); margin: 16px; cursor: pointer; }
+        .toggle-switch { width: 50px; height: 28px; background: #0D9488; border-radius: 14px; position: relative; margin-left: auto; }
+        .toggle-switch::after { content: ''; width: 24px; height: 24px; background: white; border-radius: 50%; position: absolute; top: 2px; right: 2px; }
+        .sdd-note { background: rgba(94, 234, 212, 0.3); border-left: 4px solid #0D9488; padding: 12px 16px; margin: 20px 16px; border-radius: 12px; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div class="page-title">File 3: Discounts + Settings + Tracking (3/10)</div>
+    <div class="demo-grid">
+        <!-- SCREEN 8: DISCOUNTS - A06, A12 -->
+        <div class="screen-wrapper">
+            <div class="role-label">🎁 SCREEN 8: DISCOUNTS - A06, A12</div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><h1>Promotions</h1><p>Discount Schemes - A06</p></div>
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-percentage"></i></div>
+                        </div>
+                    </div>
+                    <div class="section-title">Active Schemes - A06</div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-gift"></i></div><div class="kpi-value">12</div><div class="kpi-label">Active Schemes</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-calendar"></i></div><div class="kpi-value">8</div><div class="kpi-label">This Month</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-chart-bar"></i></div><div class="kpi-value">Rs. 2.1L</div><div class="kpi-label">Discount Given</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-users"></i></div><div class="kpi-value">156</div><div class="kpi-label">Customers</div></div>
+                    </div>
+                    <div class="section-title">Current Promotions</div>
+                    <div class="list-item">
+                        <div class="avatar-icon" style="background: #F59E0B;">10%</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Summer Sale 2025</div><div style="font-size: 11px; opacity: 0.7;">All Beverages | Till 30 Oct</div></div>
+                        <div class="badge">Active</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon" style="background: #8B5CF6;">B1G1</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Buy 1 Get 1 Free</div><div style="font-size: 11px; opacity: 0.7;">Snacks Category | Till 15 Nov</div></div>
+                        <div class="badge">Active</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon" style="background: #10B981;">20%</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Bulk Purchase</div><div style="font-size: 11px; opacity: 0.7;">Orders > Rs. 50K | A12</div></div>
+                        <div class="badge">Active</div>
+                    </div>
+                    <button class="btn-primary"><i class="fas fa-plus" style="margin-right: 8px;"></i>Create Scheme - A06</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 9: SETTINGS - A19-A24 -->
+        <div class="screen-wrapper">
+            <div class="role-label">⚙️ SCREEN 9: SETTINGS - A19 to A24</div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><h1>Settings</h1><p>Company & System Config - A19</p></div>
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-cog"></i></div>
+                        </div>
+                    </div>
+                    <div class="section-title">Company Info - A19</div>
+                    <div class="list-item">
+                        <div class="avatar-icon"><i class="fas fa-building"></i></div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Company Profile</div><div style="font-size: 11px; opacity: 0.7;">Name, Address, Tax Info</div></div>
+                        <i class="fas fa-chevron-right" style="opacity: 0.5;"></i>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon"><i class="fas fa-file-invoice"></i></div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Invoice Settings - A20</div><div style="font-size: 11px; opacity: 0.7;">Template, Numbering</div></div>
+                        <i class="fas fa-chevron-right" style="opacity: 0.5;"></i>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon"><i class="fas fa-bell"></i></div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Notifications - A21</div><div style="font-size: 11px; opacity: 0.7;">Email, SMS, Push</div></div>
+                        <div class="toggle-switch"></div>
+                    </div>
+                    <div class="section-title">System - A22, A23, A24</div>
+                    <div class="list-item">
+                        <div class="avatar-icon"><i class="fas fa-database"></i></div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Backup & Restore - A22</div><div style="font-size: 11px; opacity: 0.7;">Auto backup enabled</div></div>
+                        <div class="badge">On</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon"><i class="fas fa-history"></i></div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Audit Logs - A23</div><div style="font-size: 11px; opacity: 0.7;">Track all changes</div></div>
+                        <i class="fas fa-chevron-right" style="opacity: 0.5;"></i>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon"><i class="fas fa-plug"></i></div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Integrations - A24</div><div style="font-size: 11px; opacity: 0.7;">Codemagic, Firebase</div></div>
+                        <div class="badge">3 Active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 10: SALESMAN TRACKING - S07, S08 -->
+        <div class="screen-wrapper">
+            <div class="role-label">📍 SCREEN 10: TRACKING - S07, S08</div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><h1>Live Tracking</h1><p>GPS + Attendance - S07, S08</p></div>
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-map-marker-alt"></i></div>
+                        </div>
+                    </div>
+                    <div class="section-title">Today's Summary - S08</div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-clock"></i></div><div class="kpi-value">8h 15m</div><div class="kpi-label">Working Hours</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-route"></i></div><div class="kpi-value">42 km</div><div class="kpi-label">Distance - S07</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-map-pin"></i></div><div class="kpi-value">18</div><div class="kpi-label">Visits Done</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-check"></i></div><div class="kpi-value">90%</div><div class="kpi-label">Route Complete</div></div>
+                    </div>
+                    <div class="section-title">Current Location - S07</div>
+                    <div style="margin: 16px; height: 200px; background: rgba(255, 255, 255, 0.6); border-radius: 20px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.8);">
+                        <div style="text-align: center;">
+                            <i class="fas fa-map-marked-alt" style="font-size: 48px; color: #0D9488; margin-bottom: 12px;"></i>
+                            <div style="font-weight: 600; color: #0D9488;">Clifton, Karachi</div>
+                            <div style="font-size: 12px; opacity: 0.7; margin-top: 4px;">Live GPS Tracking Active</div>
+                        </div>
+                    <div class="section-title">Check-In History - S08</div>
+                    <div class="list-item">
+                        <div class="avatar-icon" style="background: #10B981;"><i class="fas fa-sign-in-alt"></i></div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Check-In</div><div style="font-size: 11px; opacity: 0.7;">9:15 AM | Al-Baik Store</div></div>
+                        <div class="badge">Done</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon" style="background: #3B82F6;"><i class="fas fa-sign-out-alt"></i></div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Check-Out</div><div style="font-size: 11px; opacity: 0.7;">9:45 AM | Al-Baik Store</div></div>
+                        <div class="badge">Done</div>
+                    </div>
+                    <div class="sdd-note"><strong>SDD S07:</strong> Real-time GPS tracking | <strong>S08:</strong> Auto attendance with geo-fence</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
