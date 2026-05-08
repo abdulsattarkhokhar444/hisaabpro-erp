@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HisaabPro ERP v1.0 - System Design Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px 40px;
+            background: #D1F2EB;
+            color: #134E4A;
+        }
+        h1, h2, h3, h4 {
+            color: #0D9488;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+        h1 { 
+            font-size: 2.2em; 
+            border-bottom: 3px solid #0D9488; 
+            padding-bottom: 10px;
+        }
+        h2 { 
+            font-size: 1.7em; 
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
+        h3 { font-size: 1.3em; }
+        p, li { 
+            font-size: 16px; 
+            margin-bottom: 12px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(16px);
+            padding: 40px;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(13, 148, 136, 0.15);
+        }
+        .note {
+            background: #D1F2EB;
+            border-left: 4px solid #0D9488;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .critical {
+            background: #FEE2E2;
+            border-left: 4px solid #EF4444;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #0D9488;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HisaabPro ERP v1.0</h1>
+        <h2>System Design Document</h2>
+        
+        <div class="note">
+            <strong>Project Info:</strong> Ye official SDD hai HisaabPro ka. 
+            <br><strong>Tech Stack:</strong> Flutter + Firebase + Firestore
+            <br><strong>CI/CD:</strong> GitHub + GitHub Codespaces + Codemagic.io
+            <br><strong>Package Name:</strong> com.hisaabpro.erp
+            <br><strong>Document Date:</strong> October 2025
+        </div>
+
+        <h2>1. Executive Summary</h2>
+        <p>HisaabPro ERP v1.0 is a modern, cloud-native Enterprise Resource Planning solution designed to streamline sales operations, inventory management, and business analytics for distribution networks.</p>
+        <p>The system provides a unified platform for Admins and Salesmen with role-based access control, real-time data synchronization, and full offline capability. Built on Flutter for cross-platform deployment and Firebase for scalable backend infrastructure.</p>
+
+        <h2>2. UI/UX Guidelines</h2>
+        <h3>2.1 Color Palette</h3>
+        <ul>
+            <li><strong>Background:</strong> #D1F2EB - Mint Teal</li>
+            <li><strong>Primary:</strong> #0D9488 - Teal 600</li>
+            <li><strong>Text:</strong> #134E4A - Teal 900</li>
+            <li><strong>Accent:</strong> #5EEAD4 - Teal 300</li>
+        </ul>
+
+        <h3>2.2 Typography</h3>
+        <p><strong>Font Family:</strong> Poppins - Google Fonts</p>
+        
+        <h3>2.3 Component Specifications</h3>
+        <p><strong>Glassmorphism Cards:</strong></p>
+        <ul>
+            <li>Border Radius: 28px</li>
+            <li>Background: rgba(255, 255, 255, 0.5)</li>
+            <li>Backdrop Filter: blur(16px)</li>
+            <li>Box Shadow: 0 8px 32px 0 rgba(13, 148, 136, 0.15)</li>
+        </ul>
+
+        <div class="critical">
+            CRITICAL UI RULE: No user avatars, profile photos, or any facial imagery anywhere in the application. User identification must use text initials, icons, or employee ID only.
+        </div>
+
+        <h2>3. Feature List - 36 Total Features</h2>
+        <h3>3.1 Admin Panel - 24 Features</h3>
+        <ul>
+            <li>A01: User & Role Management</li>
+            <li>A02: Salesman Territory Assignment</li>
+            <li>A03: Product Catalog CRUD</li>
+            <li>A04: Category & Brand Management</li>
+            <li>A05: Price List Management</li>
+            <li>A06: Discount Schemes & Promotions</li>
+            <li>A07: Customer Database CRUD</li>
+            <li>A08: Customer Credit Limits</li>
+            <li>A09: Inventory Stock Management</li>
+            <li>A10: Warehouse Management</li>
+        </ul>
+
+        <h3>3.2 Salesman App - 12 Features</h3>
+        <ul>
+            <li>S01: Customer List View</li>
+            <li>S02: Create Sales Order</li>
+            <li>S03: Offline Order Sync</li>
+            <li>S04: Product Catalog Browse</li>
+            <li>S05: Route Planning</li>
+        </ul>
+
+        <h2>4. Tech Stack & Deployment</h2>
+        <table>
+            <tr>
+                <th>Layer</th>
+                <th>Technology</th>
+            </tr>
+            <tr>
+                <td>Frontend</td>
+                <td>Flutter 3.x - Dart</td>
+            </tr>
+            <tr>
+                <td>Backend</td>
+                <td>Firebase - Auth, Firestore, Storage</td>
+            </tr>
+            <tr>
+                <td>Version Control</td>
+                <td>GitHub</td>
+            </tr>
+            <tr>
+                <td>Development</td>
+                <td>GitHub Codespaces</td>
+            </tr>
+            <tr>
+                <td>CI/CD</td>
+                <td>Codemagic.io</td>
+            </tr>
+            <tr>
+                <td>Package Name</td>
+                <td>com.hisaabpro.erp</td>
+            </tr>
+        </table>
+
+        <h2>5. Development Workflow</h2>
+        <ol>
+            <li><strong>Code:</strong> GitHub Codespaces ya Mobile pe GitHub App</li>
+            <li><strong>Commit:</strong> GitHub repo: abdulsattarkhokhar444/hisaabpro-erp</li>
+            <li><strong>Build:</strong> Codemagic.io auto-build on push</li>
+            <li><strong>Test:</strong> Download APK from Codemagic artifacts</li>
+            <li><strong>Deploy:</strong> Manual APK install ya Play Store</li>
+        </ol>
+
+        <div class="note">
+            <strong>Note:</strong> Ye document HisaabPro ka official reference hai. Iske mutabiq hi saara development hoga. Jab bhi confusion ho, ye file check karo.
+        </div>
+    </div>
+</body>
+</html>
