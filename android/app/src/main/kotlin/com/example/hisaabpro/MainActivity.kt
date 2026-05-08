@@ -1,4 +1,4 @@
-package com.example.hisaabpro
+package com.hisaabpro.erp
 
 import io.flutter.embedding.android.FlutterActivity
 

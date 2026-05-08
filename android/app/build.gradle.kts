@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.hisaabpro"
+    namespace = "com.hisaabpro.erp"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
