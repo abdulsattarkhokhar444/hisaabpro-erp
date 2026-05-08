@@ -73,7 +73,6 @@ class _LoginScreenState extends State<LoginScreen> {
             colors: [Color(0xFFD1F2EB), Color(0xFF5EEAD4)],
           ),
         ),
-     ),
         child: Center(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(28),
@@ -128,14 +127,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: _loading 
                           ? const CircularProgressIndicator(color: Colors.white) 
                           : const Text('Login', style: TextStyle(fontSize: 16, color: Colors.white)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
+                       ),
+                     ),
+                   ],
+                 ),
+               ),
+             ),
+           ),
+         ),
+       ),
       ),
     );
   }
