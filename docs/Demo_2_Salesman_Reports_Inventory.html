@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HisaabPro - File 2: Salesman + Reports + Inventory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #D1F2EB; color: #134E4A; padding: 20px; }
+        .page-title { text-align: center; color: #0D9488; font-size: 28px; font-weight: 700; margin-bottom: 30px; }
+        .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .screen-wrapper { display: flex; flex-direction: column; align-items: center; }
+        .role-label { text-align: center; font-size: 14px; font-weight: 700; color: white; margin-bottom: 16px; background: linear-gradient(135deg, #0D9488, #5EEAD4); padding: 10px 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3); }
+        .phone-mockup { max-width: 380px; background: #1f2937; border-radius: 40px; padding: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        .screen { background: #D1F2EB; border-radius: 32px; min-height: 780px; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #0D9488, #5EEAD4); color: white; padding: 24px 20px; border-radius: 0 0 28px 28px; }
+        .header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .header p { font-size: 12px; opacity: 0.9; }
+        .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px; }
+        .kpi-card { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.8); padding: 16px; text-align: center; box-shadow: 0 8px 32px 0 rgba(13, 148, 136, 0.15); }
+        .kpi-icon { width: 48px; height: 48px; background: #0D9488; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: white; font-size: 20px; }
+        .kpi-value { font-size: 20px; font-weight: 700; color: #0D9488; }
+        .kpi-label { font-size: 10px; opacity: 0.7; margin-top: 4px; }
+        .section-title { font-size: 16px; font-weight: 600; margin: 24px 16px 12px; color: #0D9488; }
+        .list-item { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.8); padding: 14px; margin: 0 16px 12px; display: flex; align-items: center; gap: 12px; }
+        .avatar-icon { width: 44px; height: 44px; background: #0D9488; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 16px; }
+        .badge { background: #10B981; color: white; padding: 4px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+        .badge-orange { background: #F59E0B; }
+        .badge-blue { background: #3B82F6; }
+        .badge-red { background: #EF4444; }
+        .btn-primary { background: #0D9488; color: white; border: none; padding: 16px 24px; border-radius: 16px; font-weight: 600; font-size: 15px; width: calc(100% - 32px); margin: 16px; cursor: pointer; }
+        .chart-box { background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(16px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.8); padding: 20px; margin: 16px; text-align: center; }
+        .bar-chart { display: flex; align-items: flex-end; justify-content: space-around; height: 120px; gap: 8px; margin-top: 16px; }
+        .bar { flex: 1; background: #0D9488; border-radius: 8px 8px 0 0; position: relative; }
+        .bar-label { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; }
+        .sdd-note { background: rgba(94, 234, 212, 0.3); border-left: 4px solid #0D9488; padding: 12px 16px; margin: 20px 16px; border-radius: 12px; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div class="page-title">File 2: Salesman + Reports + Inventory (3/10)</div>
+    <div class="demo-grid">
+        <!-- SCREEN 5: SALESMAN APP - S01-S12 -->
+        <div class="screen-wrapper">
+            <div class="role-label">👨‍💼 SCREEN 5: SALESMAN APP - S01 to S12</div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><h1>Salesman Portal</h1><p>Ali Hassan | EMP002</p></div>
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-briefcase"></i></div>
+                        </div>
+                    </div>
+                    <div class="section-title">My Performance - S06</div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-chart-line"></i></div><div class="kpi-value">Rs. 85K</div><div class="kpi-label">Today Sales</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-route"></i></div><div class="kpi-value">18/20</div><div class="kpi-label">Visits - S05</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-shopping-cart"></i></div><div class="kpi-value">12</div><div class="kpi-label">Orders - S02</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-wifi"></i></div><div class="kpi-value">3</div><div class="kpi-label">Offline - S03</div></div>
+                    </div>
+                    <div class="section-title">Today's Route - S05</div>
+                    <div class="list-item">
+                        <div class="avatar-icon">AB</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Al-Baik Store</div><div style="font-size: 11px; opacity: 0.7;">Clifton | 0.5km - S01</div></div>
+                        <div class="badge badge-orange">Next</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon">KM</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Karachi Mart</div><div style="font-size: 11px; opacity: 0.7;">DHA | Completed</div></div>
+                        <div class="badge">Done</div>
+                    </div>
+                    <button class="btn-primary"><i class="fas fa-plus" style="margin-right: 8px;"></i>Create Order - S02</button>
+                    <div class="sdd-note"><strong>SDD S03:</strong> Offline Sync - Orders saved locally when offline</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 6: REPORTS - A13-A18 -->
+        <div class="screen-wrapper">
+            <div class="role-label">📊 SCREEN 6: REPORTS - A13 to A18</div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><h1>Sales Reports</h1><p>Analytics Dashboard - A13</p></div>
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-chart-pie"></i></div>
+                        </div>
+                    </div>
+                    <div class="section-title">Monthly Trend - A14</div>
+                    <div class="chart-box">
+                        <div style="font-weight: 600; margin-bottom: 8px;">Last 6 Months (Lakhs)</div>
+                        <div class="bar-chart">
+                            <div class="bar" style="height: 60%;"><span class="bar-label">May</span></div>
+                            <div class="bar" style="height: 80%;"><span class="bar-label">Jun</span></div>
+                            <div class="bar" style="height: 70%;"><span class="bar-label">Jul</span></div>
+                            <div class="bar" style="height: 90%;"><span class="bar-label">Aug</span></div>
+                            <div class="bar" style="height: 100%;"><span class="bar-label">Sep</span></div>
+                            <div class="bar" style="height: 85%;"><span class="bar-label">Oct</span></div>
+                        </div>
+                    <div class="section-title">Top Products - A15</div>
+                    <div class="list-item">
+                        <div class="avatar-icon" style="background: #F59E0B;">1</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Coca Cola 1.5L</div><div style="font-size: 11px; opacity: 0.7;">2,450 units sold</div></div>
+                        <div class="badge">Rs. 4.2L</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon" style="background: #9CA3AF;">2</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Lays Classic</div><div style="font-size: 11px; opacity: 0.7;">1,890 units sold</div></div>
+                        <div class="badge">Rs. 2.8L</div>
+                    </div>
+                    <div class="section-title">Territory - A17</div>
+                    <div class="list-item">
+                        <div class="avatar-icon">KHI</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Karachi Zone</div><div style="font-size: 11px; opacity: 0.7;">8 Salesmen | 45% Share</div></div>
+                        <div class="badge">Rs. 12L</div>
+                    </div>
+                    <button class="btn-primary"><i class="fas fa-download" style="margin-right: 8px;"></i>Export Report - A18</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 7: INVENTORY - A09-A12 -->
+        <div class="screen-wrapper">
+            <div class="role-label">📦 SCREEN 7: INVENTORY - A09 to A12</div>
+            <div class="phone-mockup">
+                <div class="screen">
+                    <div class="header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><h1>Inventory Control</h1><p>Stock Management - A09</p></div>
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="fas fa-warehouse"></i></div>
+                        </div>
+                    </div>
+                    <div class="section-title">Stock Alerts - A10</div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card"><div class="kpi-icon" style="background: #EF4444;"><i class="fas fa-exclamation-triangle"></i></div><div class="kpi-value">12</div><div class="kpi-label">Low Stock</div></div>
+                        <div class="kpi-card"><div class="kpi-icon" style="background: #F59E0B;"><i class="fas fa-clock"></i></div><div class="kpi-value">8</div><div class="kpi-label">Expiring</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-truck"></i></div><div class="kpi-value">24</div><div class="kpi-label">Pending PO</div></div>
+                        <div class="kpi-card"><div class="kpi-icon"><i class="fas fa-check-circle"></i></div><div class="kpi-value">98%</div><div class="kpi-label">Fill Rate</div></div>
+                    </div>
+                    <div class="section-title">Recent Orders - A11</div>
+                    <div class="list-item">
+                        <div class="avatar-icon">SO</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">SO-2025-1245</div><div style="font-size: 11px; opacity: 0.7;">Ali Hassan | Rs. 45,200</div></div>
+                        <div class="badge badge-blue">Processing</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="avatar-icon">SO</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">SO-2025-1244</div><div style="font-size: 11px; opacity: 0.7;">Sara Khan | Rs. 32,800</div></div>
+                        <div class="badge">Delivered</div>
+                    </div>
+                    <div class="section-title">Price Lists - A05</div>
+                    <div class="list-item">
+                        <div class="avatar-icon">PL</div>
+                        <div style="flex: 1;"><div style="font-weight: 600; font-size: 14px;">Karachi Retail 2025</div><div style="font-size: 11px; opacity: 0.7;">1,248 products | Active</div></div>
+                        <div class="badge">Live</div>
+                    </div>
+                    <button class="btn-primary"><i class="fas fa-boxes" style="margin-right: 8px;"></i>Manage Stock - A09</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+  </html>
