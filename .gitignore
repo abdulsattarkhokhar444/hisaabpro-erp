@@ -1,4 +1,8 @@
 # Flutter/Dart
+/flutter/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
 .dart_tool/
 .packages
 build/
