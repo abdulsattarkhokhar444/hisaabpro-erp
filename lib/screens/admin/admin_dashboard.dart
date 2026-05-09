@@ -20,22 +20,14 @@ class AdminDashboard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('HisaabPro ERP',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.teal900,
-                          )),
+                          style: AppTheme.lightTheme.textTheme.displayLarge),
                       Text('Admin Panel v1.0',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 14,
-                            color: AppTheme.teal600,
-                          )),
+                          style: AppTheme.lightTheme.textTheme.titleLarge
+                              ?.copyWith(color: AppTheme.teal600)),
                     ],
                   ),
                   // Initials only - No photo per SDD
@@ -43,10 +35,10 @@ class AdminDashboard extends StatelessWidget {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: AppTheme.teal600,
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(24),
                     ),
-                    child: const Text('AD',
-                         style: TextStyle(
+                    child: const Text('Admin',
+                        style: TextStyle(
                           fontFamily: 'Poppins',
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -54,23 +46,62 @@ class AdminDashboard extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 30),
-              
+              const SizedBox(height: 32),
+
               // Glassmorphism Cards Grid - A01 to A06
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
                   children: [
-                    _buildGlassCard(context, 'Users', Icons.people_outline, 'A01', () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => UserManagementScreen()));
-                    }),
-                    _buildGlassCard(context, 'Products', Icons.inventory_2_outlined, 'A03', () {}),
-                    _buildGlassCard(context, 'Customers', Icons.store_outlined, 'A07', () {}),
-                    _buildGlassCard(context, 'Inventory', Icons.warehouse_outlined, 'A09', () {}),
-                    _buildGlassCard(context, 'Orders', Icons.receipt_long_outlined, '', () {}),
-                    _buildGlassCard(context, 'Reports', Icons.analytics_outlined, '', () {}),
+                    _buildGlassCard(
+                      context: context,
+                      title: 'Users',
+                      icon: Icons.people_alt_outlined,
+                      featureId: 'A01',
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => UserManagementScreen()));
+                      },
+                    ),
+                    _buildGlassCard(
+                      context: context,
+                      title: 'Products',
+                      icon: Icons.inventory_2_outlined,
+                      featureId: 'A03',
+                      onTap: () {},
+                    ),
+                    _buildGlassCard(
+                      context: context,
+                      title: 'Customers',
+                      icon: Icons.store_outlined,
+                      featureId: 'A07',
+                      onTap: () {},
+                    ),
+                    _buildGlassCard(
+                      context: context,
+                      title: 'Inventory',
+                      icon: Icons.warehouse_outlined,
+                      featureId: 'A09',
+                      onTap: () {},
+                    ),
+                    _buildGlassCard(
+                      context: context,
+                      title: 'Orders',
+                      icon: Icons.receipt_long_outlined,
+                      featureId: '',
+                      onTap: () {},
+                    ),
+                    _buildGlassCard(
+                      context: context,
+                      title: 'Reports',
+                      icon: Icons.analytics_outlined,
+                      featureId: '',
+                      onTap: () {},
+                    ),
                   ],
                 ),
               ),
@@ -81,7 +112,13 @@ class AdminDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildGlassCard(BuildContext context, String title, IconData icon, String featureId, VoidCallback onTap) {
+  Widget _buildGlassCard({
+    required BuildContext context,
+    required String title,
+    required IconData icon,
+    required String featureId,
+    required VoidCallback onTap,
+  }) {
     return Container(
       decoration: AppTheme.glassCard, // SDD 2.3
       child: ClipRRect(
@@ -94,7 +131,7 @@ class AdminDashboard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(icon, size: 40, color: AppTheme.teal600),
+                Icon(icon, size: 48, color: AppTheme.teal600),
                 const SizedBox(height: 12),
                 Text(title,
                     style: const TextStyle(
