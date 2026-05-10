@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import 'user_management.dart';
+import 'product_management.dart';
 
 class AdminDashboard extends StatelessWidget {
   const AdminDashboard({super.key});
@@ -72,7 +73,7 @@ class AdminDashboard extends StatelessWidget {
                       title: 'Products',
                       icon: Icons.inventory_2_outlined,
                       featureId: 'A03',
-                      onTap: () {},
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProductManagement())),
                     ),
                     _buildGlassCard(
                       context: context,
