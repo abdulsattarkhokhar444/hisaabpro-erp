@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import 'user_management.dart';
 import 'product_management.dart';
+import 'sales_management.dart';
 
 class AdminDashboard extends StatelessWidget {
   const AdminDashboard({super.key});
@@ -91,10 +92,13 @@ class AdminDashboard extends StatelessWidget {
                     ),
                     _buildGlassCard(
                       context: context,
-                      title: 'Orders',
-                      icon: Icons.receipt_long_outlined,
-                      featureId: '',
-                      onTap: () {},
+                      title: 'Sales',
+                      icon: Icons.point_of_sale_outlined,
+                      featureId: 'A05',
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const SalesManagement())
+                      ),
                     ),
                     _buildGlassCard(
                       context: context,
