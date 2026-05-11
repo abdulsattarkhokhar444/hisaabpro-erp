@@ -5,6 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:ui';
 import 'theme/app_theme.dart';
 import 'screens/admin/admin_dashboard.dart';
+import 'screens/salesman/salesman_dashboard.dart'; // NEW
+import 'services/user_service.dart'; // NEW
+import 'models/user_model.dart'; // NEW
 
 //import 'firebase_options.dart';
 
@@ -46,32 +49,39 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   bool _loading = false;
 
-  Future<void> _login() async {
-    setState(() => _loading = true);
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      // Success - Dashboard pe jao
-      if (mounted) {
+Future<void> _login() async {
+  setState(() => _loading = true);
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+
+    UserModel? user = await UserService().getCurrentUserData();
+    if (!mounted) return;
+
+    if (user != null) {
+      if (user.role == 'admin') {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const AdminDashboard()));
-        //ScaffoldMessenger.of(context).showSnackBar(
-        //const SnackBar(content: Text('Login Successful - HisaabPro me Khush Amdeed')),
-        //);
+      } else {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => const SalesmanDashboard()));
       }
-    } on FirebaseAuthException catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.message ?? 'Login failed')),
-        );
-      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('User data not found')),
+      );
     }
-    if (mounted) {
-      setState(() => _loading = false);
-    }
+  } on FirebaseAuthException catch (e) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(e.message ?? 'Login failed')),
+    );
   }
+  if (!mounted) return;
+  setState(() => _loading = false);
+}
 
   @override
   Widget build(BuildContext context) {

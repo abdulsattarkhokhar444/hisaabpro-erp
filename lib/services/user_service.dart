@@ -1,3 +1,4 @@
+import 'dart:developer' as developer;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/user_model.dart';
@@ -63,5 +64,26 @@ class UserService {
     await _firestore.collection('users').doc(uid).update({
       'isActive': false,
     });
+  }
+// NEW: Get Current Logged In User Data
+  Future<UserModel?> getCurrentUserData() async {
+    try {
+      User? user = _auth.currentUser;
+      if (user != null) {
+        DocumentSnapshot doc = await _firestore.collection('users').doc(user.uid).get();
+        if (doc.exists) {
+          return UserModel.fromMap(doc.data() as Map<String, dynamic>);
+        }
+      }
+      return null;
+    } catch (e) {
+      developer.log('Error getting user data: $e');
+      return null;
+    }
+  }
+
+  // NEW: Sign Out
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }
