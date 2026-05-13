@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 import '../../models/user_model.dart';
@@ -50,13 +51,56 @@ class UserManagementScreen extends StatelessWidget {
                   title: Text('${user.name} - ${user.employeeId}',
                     style: const TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600, color: AppTheme.teal900)),
                   subtitle: Text(user.email, style: const TextStyle(fontFamily: 'Poppins', fontSize: 12)),
-                  trailing: Chip(
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                  Chip(
                     label: Text(user.role.toUpperCase(),
                       style: const TextStyle(fontFamily: 'Poppins', fontSize: 10, color: Colors.white)),
                     backgroundColor: user.role == 'admin'? AppTheme.teal600 : AppTheme.teal300,
                   ),
-                ),
-              );
+                  PopupMenuButton<String>(
+                    icon: const Icon(Icons.more_vert, color: AppTheme.teal900),
+                    onSelected: (value) async {
+                      if (value == 'toggle_active') {
+                        await FirebaseFirestore.instance
+                          .collection('users')
+                          .doc(user.uid)
+                          .update({'isActive': !user.isActive});
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              user.isActive ? 'User deactivated' : 'User activated',
+                              style: const TextStyle(fontFamily: 'Poppins'),
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    itemBuilder: (context) => [
+                      PopupMenuItem<String>(
+                        value: 'toggle_active',
+                        child: Row(
+                          children: [
+                            Icon(
+                              user.isActive ? Icons.block : Icons.check_circle,
+                              color: user.isActive ? Colors.red : Colors.green,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              user.isActive ? 'Deactivate' : 'Activate',
+                              style: const TextStyle(fontFamily: 'Poppins'),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
             },
           );
         },

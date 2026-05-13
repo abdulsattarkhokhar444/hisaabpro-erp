@@ -49,39 +49,51 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   bool _loading = false;
 
-Future<void> _login() async {
-  setState(() => _loading = true);
-  try {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
+  Future<void> _login() async {
+    setState(() => _loading = true);
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
 
-    UserModel? user = await UserService().getCurrentUserData();
-    if (!mounted) return;
+      UserModel? user = await UserService().getCurrentUserData();
+      if (!mounted) return;
 
-    if (user != null) {
-      if (user.role == 'admin') {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const AdminDashboard()));
+      if (user != null) {
+        if (user.isActive == false) {
+          await FirebaseAuth.instance.signOut();
+          if (!mounted) return;
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Your account is deactivated. Please contact admin.'),
+              backgroundColor: Colors.red,
+            ),
+          );
+          setState(() => _loading = false);
+          return;
+        }
+        if (user.role == 'admin') {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => const AdminDashboard()));
+        } else {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => const SalesmanDashboard()));
+        }
       } else {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const SalesmanDashboard()));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('User data not found')),
+        );
       }
-    } else {
+    } on FirebaseAuthException catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User data not found')),
+        SnackBar(content: Text(e.message ?? 'Login failed')),
       );
     }
-  } on FirebaseAuthException catch (e) {
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(e.message ?? 'Login failed')),
-    );
+    setState(() => _loading = false);
   }
-  if (!mounted) return;
-  setState(() => _loading = false);
-}
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../theme/app_theme.dart';
 import 'user_management.dart';
 import 'product_management.dart';
@@ -45,6 +46,13 @@ class AdminDashboard extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         )),
+                  ),
+                  const SizedBox(width: 8,),
+                  IconButton(
+                    icon: const Icon(Icons.logout, color: AppTheme.teal600),
+                    onPressed: () async {
+                    await FirebaseAuth.instance.signOut();
+                  }, 
                   ),
                 ],
               ),

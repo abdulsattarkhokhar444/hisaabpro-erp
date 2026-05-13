@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../theme/app_theme.dart';
 import '../admin/sales_management.dart';
 import '../../services/user_service.dart';
@@ -52,7 +53,7 @@ class _SalesmanDashboardState extends State<SalesmanDashboard> {
           IconButton(
             icon: const Icon(Icons.logout, color: AppTheme.teal600),
             onPressed: () async {
-              await _userService.signOut();
+              await FirebaseAuth.instance.signOut();
             },
           ),
         ],
