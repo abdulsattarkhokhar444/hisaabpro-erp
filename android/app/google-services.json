@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "275873190764",
-    "project_id": "ask-enterprise",
-    "storage_bucket": "ask-enterprise.firebasestorage.app"
+    "project_number": "246256598140",
+    "project_id": "hisaabpro-73488",
+    "storage_bucket": "hisaabpro-73488.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:275873190764:android:1ed6f59e04da307f1b1949",
+        "mobilesdk_app_id": "1:246256598140:android:7fd22c585bc98a14685df9",
         "android_client_info": {
-          "package_name": "com.ask.enterprise"
+          "package_name": "com.hisaabpro.erp"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAhz4kuyQLbZX-Zlr0CoWqmKu8kA1ULu-E"
+          "current_key": "AIzaSyC6-rOtYkClymIMG2YssAaC89_EpzV1Eyo"
         }
       ],
       "services": {
